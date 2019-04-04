@@ -1,0 +1,19 @@
+server {
+    listen 80;
+    server_name 142.93.245.39;
+    
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/djangodeploy/portfolio-project;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/djangodeploy/portfolio-project/portfolio.sock;
+    }
+}
+   
+
+
+
